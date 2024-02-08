@@ -3,7 +3,11 @@ for _,v in pairs(rs.getSides()) do rednet.open(v) end
 
 print("Chat Online")
 _, pcid, pcmsg, _ = os.pullEvent("rednet_message")
-rednet.broadcast(pcmsg)
+if pcid == 110 then
+	print("Request from login server was blocked.")
+else
+	rednet.broadcast(pcmsg)
+end
 print(pcmsg)
 
 
